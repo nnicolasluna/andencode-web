@@ -1,0 +1,142 @@
+---
+const contactInfo = [
+  {
+    icon: "📧",
+    label: "Email",
+    value: "hola@anden.dev",
+    href: "mailto:hola@anden.dev",
+  },
+  {
+    icon: "📱",
+    label: "WhatsApp",
+    value: "+1 (555) 000-0000",
+    href: "https://wa.me/15550000000",
+  },
+  {
+    icon: "📍",
+    label: "Ubicación",
+    value: "Latinoamérica — Remoto Global",
+    href: null,
+  },
+];
+---
+
+<section id="contacto" class="w-full bg-[#010310] py-24 px-6">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="flex flex-col lg:flex-row gap-16">
+      <!-- Left: Heading + info -->
+      <div class="flex-1">
+        <div class="flex items-start gap-6 mb-10">
+          <div class="w-[5px] h-[69px] rounded-full mt-1 flex-shrink-0" style="background: linear-gradient(184.14deg, #FAB406 0%, #7B5000 100%);"></div>
+          <div>
+            <h2 class="font-audiowide text-[35px] text-[#fab306] leading-[55px]">Contacto</h2>
+            <p class="font-inconsolata font-black text-[35px] text-white leading-[55px]">
+              Hablemos de tu proyecto
+            </p>
+          </div>
+        </div>
+
+        <p class="font-inconsolata text-[#718096] text-lg leading-[36px] mb-10 max-w-[480px]">
+          ¿Listo para transformar tu empresa con IA? Agenda una reunión gratuita con nuestro equipo y descubre cómo podemos ayudarte.
+        </p>
+
+        <div class="flex flex-col gap-6">
+          {
+            contactInfo.map((info) => (
+              <div class="flex items-center gap-4">
+                <span class="text-2xl">{info.icon}</span>
+                <div>
+                  <p class="font-inconsolata text-[#718096] text-xs uppercase tracking-wider mb-0.5">
+                    {info.label}
+                  </p>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      class="font-inconsolata text-white text-base hover:text-[#fab306] transition-colors"
+                    >
+                      {info.value}
+                    </a>
+                  ) : (
+                    <p class="font-inconsolata text-white text-base">{info.value}</p>
+                  )}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Right: Contact form -->
+      <div class="flex-1 bg-[#151f2f] rounded-[20px] p-8 border border-white/10">
+        <h3 class="font-audiowide text-[22px] text-white mb-6">Agenda una reunión</h3>
+        <form id="contact-form" class="flex flex-col gap-5">
+          <div class="flex flex-col gap-1.5">
+            <label for="name" class="font-inconsolata text-[#718096] text-sm">Nombre completo</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Tu nombre"
+              required
+              class="bg-[#0d1a27] border border-white/10 rounded-[7px] px-4 py-3 font-inconsolata text-white text-sm placeholder:text-[#4a5568] focus:outline-none focus:border-[#fab306]/60 transition-colors"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="email" class="font-inconsolata text-[#718096] text-sm">Email empresarial</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="tu@empresa.com"
+              required
+              class="bg-[#0d1a27] border border-white/10 rounded-[7px] px-4 py-3 font-inconsolata text-white text-sm placeholder:text-[#4a5568] focus:outline-none focus:border-[#fab306]/60 transition-colors"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="company" class="font-inconsolata text-[#718096] text-sm">Empresa</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              placeholder="Nombre de tu empresa"
+              class="bg-[#0d1a27] border border-white/10 rounded-[7px] px-4 py-3 font-inconsolata text-white text-sm placeholder:text-[#4a5568] focus:outline-none focus:border-[#fab306]/60 transition-colors"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="message" class="font-inconsolata text-[#718096] text-sm">¿En qué podemos ayudarte?</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Cuéntanos sobre tu proyecto o necesidad..."
+              class="bg-[#0d1a27] border border-white/10 rounded-[7px] px-4 py-3 font-inconsolata text-white text-sm placeholder:text-[#4a5568] focus:outline-none focus:border-[#fab306]/60 transition-colors resize-none"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3.5 rounded-[5px] font-inconsolata font-semibold text-sm text-[#151f2f] transition-opacity hover:opacity-90"
+            style="background: linear-gradient(201.61deg, #FBBA05 0%, #F69F07 100%);"
+          >
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const btn = e.currentTarget?.querySelector("button[type=submit]") as HTMLButtonElement;
+    if (btn) {
+      btn.textContent = "¡Mensaje enviado!";
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = "Enviar mensaje";
+        btn.disabled = false;
+        (e.currentTarget as HTMLFormElement)?.reset();
+      }, 3000);
+    }
+  });
+</script>

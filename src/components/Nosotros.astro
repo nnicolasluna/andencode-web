@@ -1,0 +1,94 @@
+---
+const stats = [
+  { value: "50+", label: "Proyectos entregados" },
+  { value: "98%", label: "Clientes satisfechos" },
+  { value: "5+", label: "Años de experiencia" },
+  { value: "24/7", label: "Soporte continuo" },
+];
+
+const values = [
+  {
+    icon: "🚀",
+    title: "Innovación continua",
+    desc: "Adoptamos las últimas tecnologías de IA para mantener a nuestros clientes a la vanguardia.",
+  },
+  {
+    icon: "🤝",
+    title: "Colaboración estratégica",
+    desc: "Trabajamos como socios de tu empresa, entendiendo tus objetivos y construyendo junto a ti.",
+  },
+  {
+    icon: "🔒",
+    title: "Seguridad y confiabilidad",
+    desc: "Cada solución está diseñada con los más altos estándares de seguridad y disponibilidad.",
+  },
+  {
+    icon: "⚡",
+    title: "Resultados rápidos",
+    desc: "Metodologías ágiles que entregan valor en semanas, no en meses.",
+  },
+];
+---
+
+<section id="nosotros" class="w-full bg-[#f9f9ff] py-24 px-6">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Heading -->
+    <div class="flex items-start gap-6 mb-16">
+      <div class="w-[5px] h-[69px] rounded-full mt-1 flex-shrink-0" style="background: linear-gradient(184.14deg, #FAB406 0%, #151F2F 100%);"></div>
+      <div>
+        <h2 class="font-audiowide text-[35px] text-[#fab306] leading-[55px]">Nosotros</h2>
+        <p class="font-inconsolata font-black text-[35px] text-[#151f2f] leading-[55px]">
+          Quiénes somos
+        </p>
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="flex flex-col lg:flex-row gap-16 items-center mb-20">
+      <div class="flex-1">
+        <p class="font-inconsolata text-[#718096] text-lg leading-[36px] mb-6">
+          Somos un equipo de ingenieros y especialistas en IA apasionados por transformar
+          los negocios con tecnología de vanguardia. Combinamos experiencia técnica profunda
+          con visión estratégica para entregar soluciones que generan impacto real.
+        </p>
+        <p class="font-inconsolata text-[#718096] text-lg leading-[36px] mb-8">
+          Desde automatización de procesos hasta chatbots inteligentes con RAG, nuestra
+          misión es democratizar el acceso a la inteligencia artificial para empresas
+          de todos los tamaños.
+        </p>
+        <a
+          href="#contacto"
+          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-[5px] font-inconsolata font-semibold text-sm text-[#fafafa] bg-[#fab306] hover:bg-[#e5a005] transition-colors"
+        >
+          Conoce al equipo
+        </a>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="flex-1 grid grid-cols-2 gap-6">
+        {
+          stats.map((stat) => (
+            <div class="bg-white rounded-[10px] p-8 text-center shadow-[0_4px_30px_0_rgba(0,0,0,0.05)]">
+              <p class="font-audiowide text-[40px] text-[#fab306] mb-2">{stat.value}</p>
+              <p class="font-inconsolata text-[#4a5568] text-sm leading-[1.62]">{stat.label}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Values -->
+    <h3 class="font-audiowide text-[28px] text-[#151f2f] text-center mb-10">Nuestros valores</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        values.map((v) => (
+          <div class="bg-white rounded-[10px] p-7 shadow-[0_4px_30px_0_rgba(0,0,0,0.05)]">
+            <p class="text-4xl mb-4">{v.icon}</p>
+            <h4 class="font-audiowide text-[16px] text-[#2d3748] mb-3 leading-snug">{v.title}</h4>
+            <p class="font-inconsolata text-[#718096] text-sm leading-[1.62]">{v.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,177 @@
+---
+const checkIcon = "https://www.figma.com/api/mcp/asset/3b327083-f815-47c4-88b1-fa94d75e8bfb";
+
+const products = [
+  {
+    id: "chatbot",
+    title: "Chatbot Bussines",
+    image: "https://www.figma.com/api/mcp/asset/7777e5cf-c67d-44b2-b761-7822159a9ad3",
+    description:
+      "Plataforma de chatbots empresariales con RAG, integración multicanal y panel de análisis avanzado.",
+    features: [
+      "Chatbots ilimitados",
+      "RAG con documentos corporativos",
+      "Integración WhatsApp, Telegram y Web",
+      "Analítica en tiempo real",
+      "API personalizada",
+      "Soporte técnico 24/7",
+    ],
+    accent: "#fab306",
+    borderColor: "border-[#fab306]",
+  },
+  {
+    id: "analytics",
+    title: "Data Analytics",
+    image: "https://www.figma.com/api/mcp/asset/94cadd23-f78e-4d68-bafb-f54c08de3039",
+    description:
+      "Herramienta avanzada de BI con IA para generar dashboards automáticos e insights predictivos.",
+    features: [
+      "Conexión multi-base de datos",
+      "Dashboards interactivos",
+      "Predicciones con Machine Learning",
+      "Alertas inteligentes",
+      "Reportes automáticos",
+      "API REST completa",
+    ],
+    accent: "#fab306",
+    borderColor: "border-[#f2c76b]",
+  },
+  {
+    id: "flow",
+    title: "Flow Automation",
+    image: "https://www.figma.com/api/mcp/asset/4cb3467a-a405-406b-be43-21523402cec4",
+    description:
+      "Automatización de procesos empresariales con agentes IA preconfigurados y flujos visuales.",
+    features: [
+      "Más de 100 flujos listos",
+      "Agentes IA inteligentes",
+      "Webhooks ilimitados",
+      "Integración con +500 apps",
+      "Ejecuciones ilimitadas",
+      "Hosting administrado",
+    ],
+    accent: "#fab306",
+    borderColor: "border-[#fab306]",
+  },
+  {
+    id: "insight",
+    title: "Insight Monitor",
+    image: "https://www.figma.com/api/mcp/asset/57eab56d-986e-4f0d-aaf3-fdd7da0355c5",
+    description:
+      "Monitoreo automatizado de precios, competencia y tendencias con IA para tu empresa.",
+    features: [
+      "Web scraping inteligente",
+      "Alertas automáticas",
+      "Análisis de competencia",
+      "Histórico de precios",
+      "Reportes semanales",
+      "API webhook integrada",
+    ],
+    accent: "#fab306",
+    borderColor: "border-[#ffca1c]",
+  },
+];
+---
+
+<section id="productos" class="w-full bg-[#010310] py-24 px-6">
+  <!-- Heading -->
+  <div class="max-w-[1200px] mx-auto mb-20">
+    <div class="flex items-start gap-6">
+      <div class="w-[5px] h-[69px] rounded-full mt-1 flex-shrink-0" style="background: linear-gradient(184.14deg, #FAB406 0%, #7B5000 100%);"></div>
+      <div>
+        <h2 class="font-audiowide text-[36px] text-[#fab306] leading-[55px]">Productos</h2>
+        <p class="font-inconsolata font-black text-[35px] text-white leading-[55px]">
+          Soluciones Listas para Usar
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product cards -->
+  <div class="max-w-[1200px] mx-auto flex flex-col gap-20">
+    {
+      products.map((product, i) => (
+        <div
+          class:list={[
+            "flex flex-col lg:flex-row gap-0 items-stretch",
+            i % 2 === 0 ? "" : "lg:flex-row-reverse",
+          ]}
+        >
+          <!-- Product image -->
+          <div class="flex-1 flex items-center justify-center p-8">
+            <div
+              class="relative w-full max-w-[370px] aspect-square"
+              style="filter: drop-shadow(0px 20px 10px rgba(0,0,0,0.25));"
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                class="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+
+          <!-- Product card -->
+          <div
+            class:list={[
+              "flex-1 bg-[#151f2f] border rounded-br-[30px] rounded-tr-[30px] p-8 flex flex-col justify-between",
+              product.borderColor,
+              i % 2 !== 0 ? "rounded-bl-[30px] rounded-tl-[30px] rounded-tr-none rounded-br-none" : "",
+            ]}
+          >
+            <div>
+              <h3
+                class="font-audiowide text-[28px] text-[#fab306] mb-4 text-center"
+              >
+                {product.title}
+              </h3>
+              <p class="font-inconsolata text-white text-sm leading-[1.62] mb-6">
+                {product.description}
+              </p>
+              <ul class="space-y-2.5 mb-8">
+                {product.features.map((f) => (
+                  <li class="flex items-center gap-3">
+                    <img
+                      src={checkIcon}
+                      alt=""
+                      class="w-5 h-3.5 object-contain flex-shrink-0"
+                    />
+                    <span class="font-inconsolata text-white text-sm leading-[1.62]">
+                      {f}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="flex justify-end">
+              <a
+                href="#contacto"
+                class="inline-flex items-center gap-1.5 font-audiowide text-[13px]"
+                style="background: linear-gradient(185.19deg, #FAB306 0%, #563713 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+              >
+                Solicita más información
+                <svg class="w-4 h-4 flex-shrink-0" fill="#fab306" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm1-8H7v2h6v3l4-4-4-4v3z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="max-w-[1200px] mx-auto mt-20 flex justify-end">
+    <a
+      href="#contacto"
+      class="inline-flex items-center gap-2 font-inconsolata font-black text-xl"
+      style="background: linear-gradient(186.42deg, #FAB306 0%, #7B3E00 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+    >
+      Solicita una reunión
+      <svg class="w-7 h-7 flex-shrink-0" fill="#fab306" viewBox="0 0 24 24">
+        <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+      </svg>
+    </a>
+  </div>
+</section>

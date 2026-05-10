@@ -1,0 +1,68 @@
+---
+const techStack = [
+  { name: "n8n", category: "Automatización" },
+  { name: "OpenAI GPT-4", category: "LLM" },
+  { name: "LangChain", category: "Orquestación" },
+  { name: "Pinecone", category: "Vector DB" },
+  { name: "React / Next.js", category: "Frontend" },
+  { name: "Node.js", category: "Backend" },
+  { name: "PostgreSQL", category: "Base de datos" },
+  { name: "Docker / K8s", category: "Infraestructura" },
+  { name: "Anthropic Claude", category: "LLM" },
+  { name: "WhatsApp API", category: "Mensajería" },
+  { name: "Telegram Bot", category: "Mensajería" },
+  { name: "AWS / GCP", category: "Cloud" },
+];
+
+const process = [
+  { step: "01", title: "Diagnóstico", desc: "Analizamos tus procesos actuales e identificamos oportunidades de automatización e IA." },
+  { step: "02", title: "Diseño", desc: "Diseñamos la arquitectura de la solución adaptada a tus necesidades y presupuesto." },
+  { step: "03", title: "Desarrollo", desc: "Implementamos iterativamente con metodología ágil, entregando valor en cada sprint." },
+  { step: "04", title: "Despliegue", desc: "Desplegamos en producción con monitoreo, soporte y capacitación para tu equipo." },
+];
+---
+
+<section id="tecnologia" class="w-full bg-[#142030] py-24 px-6">
+  <div class="max-w-[1200px] mx-auto">
+    <!-- Heading -->
+    <div class="flex items-start gap-6 mb-16">
+      <div class="w-[5px] h-[69px] rounded-full mt-1 flex-shrink-0" style="background: linear-gradient(184.14deg, #FAB406 0%, #7B5000 100%);"></div>
+      <div>
+        <h2 class="font-audiowide text-[35px] text-[#fab306] leading-[55px]">Tecnología</h2>
+        <p class="font-inconsolata font-black text-[35px] text-white leading-[55px]">
+          Nuestro Stack y Proceso
+        </p>
+      </div>
+    </div>
+
+    <!-- Process steps -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+      {
+        process.map((p) => (
+          <div class="relative">
+            <div class="w-12 h-12 rounded-full bg-[#fab306]/10 border border-[#fab306] flex items-center justify-center mb-4">
+              <span class="font-audiowide text-[#fab306] text-sm">{p.step}</span>
+            </div>
+            <h4 class="font-audiowide text-white text-[18px] mb-3">{p.title}</h4>
+            <p class="font-inconsolata text-[#718096] text-sm leading-[1.62]">{p.desc}</p>
+            {/* Connector line */}
+            <div class="hidden lg:block absolute top-6 left-[calc(48px+1rem)] right-[-1rem] h-px bg-[#fab306]/20"></div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Tech stack -->
+    <h3 class="font-audiowide text-[28px] text-white text-center mb-10">Stack tecnológico</h3>
+    <div class="flex flex-wrap justify-center gap-3">
+      {
+        techStack.map((t) => (
+          <div class="bg-[#151f2f] border border-white/10 rounded-[7px] px-5 py-3 flex flex-col items-center gap-1 hover:border-[#fab306]/50 transition-colors">
+            <span class="font-inconsolata text-white font-medium text-sm">{t.name}</span>
+            <span class="font-inconsolata text-[#718096] text-xs">{t.category}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

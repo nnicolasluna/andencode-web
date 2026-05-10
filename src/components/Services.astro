@@ -1,0 +1,237 @@
+---
+const arrowLeft = "https://www.figma.com/api/mcp/asset/8bfd86ec-9cdd-457d-a383-79a186cb607d";
+const arrowRight = "https://www.figma.com/api/mcp/asset/1036b46c-c700-4589-9ebd-620cea26d8fc";
+const checkIcon = "https://www.figma.com/api/mcp/asset/f034393b-5d34-42d6-957c-8e020660c0d8";
+const videoThumb = "https://www.figma.com/api/mcp/asset/e537c35b-ed8c-46a6-ae5d-56492b1f9078";
+const playIcon = "https://www.figma.com/api/mcp/asset/604a6b3a-0e3c-449f-bc3f-d5e1eba2bb06";
+
+const services = [
+  {
+    id: "automatizacion",
+    title: "Automatización con Agentes IA",
+    description:
+      "Workflows inteligentes que ejecutan tareas complejas de forma autónoma, integrando múltiples sistemas y tomando decisiones basadas en contexto.",
+    features: ["n8n + LLMs", "Function calling", "Multi-agentes", "Orquestación inteligente"],
+    icon: "https://www.figma.com/api/mcp/asset/936ffb20-f0b9-4a89-9e5f-ad29d9584610",
+    active: true,
+  },
+  {
+    id: "chatbots",
+    title: "Chatbots RAG Inteligentes",
+    description:
+      "Chatbots con memoria contextual que entienden y aprenden de tu documentación empresarial usando tecnología de embeddings vectoriales y LLMs.",
+    features: ["Embeddings vectoriales", "Memoria contextual", "LLMs de última generación", "Integración multicanal"],
+    icon: "https://www.figma.com/api/mcp/asset/58e1da4b-6e61-434d-8a52-0e610fea9749",
+    active: false,
+  },
+  {
+    id: "scraping",
+    title: "Web Scraping Inteligente",
+    description:
+      "Extracción y análisis de datos web con comprensión semántica, capaz de entender contexto y estructurar información automáticamente.",
+    features: ["Comprensión semántica", "Estructuración automática", "Análisis de datos", "Escalabilidad"],
+    icon: "https://www.figma.com/api/mcp/asset/a31c8423-ffe0-4650-9495-6b03d840f4be",
+    active: false,
+  },
+  {
+    id: "fullstack",
+    title: "Desarrollo Full-Stack",
+    description:
+      "Aplicaciones web y móviles modernas con arquitecturas cloud-native, microservicios y las últimas tecnologías del mercado.",
+    features: ["Cloud-native", "Microservicios", "Web y móvil", "Escalable"],
+    icon: "https://www.figma.com/api/mcp/asset/2881cdd9-e856-429a-9610-0f49c5f3083c",
+    active: false,
+  },
+];
+---
+
+<section id="servicios" class="w-full">
+  <!-- Carousel header -->
+  <div class="bg-[#f9f9ff] py-16 px-6 relative">
+    <h2 class="font-audiowide text-[35px] text-[#1a202c] text-center mb-10">Servicios</h2>
+
+    <!-- Cards carousel -->
+    <div class="relative max-w-[1200px] mx-auto">
+      <!-- Arrow Left -->
+      <button
+        id="prev-service"
+        class="absolute left-[-28px] top-1/2 -translate-y-1/2 z-10 w-11 h-11"
+        aria-label="Anterior"
+      >
+        <img src={arrowLeft} alt="" class="w-full h-full object-contain" />
+      </button>
+
+      <!-- Cards -->
+      <div id="services-track" class="overflow-hidden">
+        <div
+          id="services-inner"
+          class="flex gap-6 transition-transform duration-300"
+        >
+          {
+            services.map((service, i) => (
+              <div
+                class:list={[
+                  "service-card flex-none w-[300px] md:w-[320px] rounded-[7px] p-7 cursor-pointer transition-all",
+                  service.active
+                    ? "bg-[#fafafa] border border-[#fab206] shadow-[0_4px_30px_0_rgba(0,0,0,0.1)]"
+                    : "bg-[#fafafa] shadow-[0_4px_30px_0_rgba(0,0,0,0.05)] border border-transparent",
+                ]}
+                data-index={i}
+              >
+                <div class="w-[58px] h-[58px] mb-4">
+                  <img src={service.icon} alt="" class="w-full h-full object-contain" />
+                </div>
+                <h3
+                  class:list={[
+                    "font-audiowide text-[17px] leading-snug mb-3",
+                    service.active ? "text-transparent bg-clip-text" : "text-[#2d3748]",
+                  ]}
+                  style={
+                    service.active
+                      ? "background-image: linear-gradient(185.27deg, #F8A706 0%, #683B0E 100%);"
+                      : ""
+                  }
+                >
+                  {service.title}
+                </h3>
+                <p class="font-inconsolata text-sm text-[#718096] leading-[1.62]">
+                  {service.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Arrow Right -->
+      <button
+        id="next-service"
+        class="absolute right-[-28px] top-1/2 -translate-y-1/2 z-10 w-11 h-11"
+        aria-label="Siguiente"
+      >
+        <img src={arrowRight} alt="" class="w-full h-full object-contain" />
+      </button>
+    </div>
+
+    <!-- Dots -->
+    <div class="flex justify-center gap-2 mt-8">
+      {
+        services.map((_, i) => (
+          <button
+            class:list={[
+              "carousel-dot rounded-full transition-all",
+              i === 0 ? "w-5 h-2 bg-[#fab306]" : "w-2 h-2 bg-[#e2e8f0]",
+            ]}
+            data-dot={i}
+            aria-label={`Ir a servicio ${i + 1}`}
+          />
+        ))
+      }
+    </div>
+
+    <!-- Numeric indicator -->
+    <div class="flex items-center justify-end max-w-[1200px] mx-auto mt-2 gap-3">
+      <span id="current-num" class="font-inconsolata font-medium text-[#a0aec0] text-base">01</span>
+      <div class="w-20 h-px bg-[#e2e8f0] relative">
+        <div id="progress-bar" class="absolute left-0 top-0 h-full bg-[#fab306] w-1/4 transition-all"></div>
+      </div>
+      <span class="font-inconsolata font-medium text-[#151f2f] text-base">0{services.length}</span>
+    </div>
+  </div>
+
+  <!-- Service detail (dark) -->
+  <div class="bg-[#142030] py-20 px-6">
+    <div class="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
+      <!-- Text -->
+      <div class="flex-1">
+        <div class="w-[69px] h-[5px] mb-6 rounded-full" style="background: linear-gradient(184.14deg, #FAB406 0%, #151F2F 100%);"></div>
+        <h2 id="detail-title" class="font-audiowide text-[35px] text-[#151f2f] leading-tight text-white mb-6">
+          Automatización<br />con Agentes IA
+        </h2>
+        <p id="detail-desc" class="font-inconsolata text-[#718096] text-lg leading-[36px] mb-8 max-w-[535px]">
+          Workflows inteligentes que ejecutan tareas complejas de forma autónoma, integrando múltiples sistemas y tomando decisiones basadas en contexto.
+        </p>
+        <ul id="detail-features" class="grid grid-cols-2 gap-y-3 gap-x-6 mb-10">
+          {
+            ["n8n + LLMs", "Function calling", "Multi-agentes", "Orquestación inteligente"].map((f) => (
+              <li class="flex items-center gap-2">
+                <img src={checkIcon} alt="" class="w-5 h-3.5 object-contain flex-shrink-0" />
+                <span class="font-inconsolata text-white text-base">{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <a href="#contacto" class="inline-flex items-center gap-2 font-inconsolata font-medium text-[#fab306] text-base hover:opacity-80 transition-opacity">
+          Agenda una reunión
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Video / Demo -->
+      <div class="flex-1 relative rounded-[20px] overflow-hidden max-w-[600px] w-full aspect-video bg-[#0d1a27]">
+        <img src={videoThumb} alt="Demo" class="absolute inset-0 w-full h-full object-cover rounded-[20px] opacity-80" />
+        <div class="absolute inset-0 backdrop-blur-[2px] bg-black/5 rounded-[20px]"></div>
+        <button
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[78px] h-[78px]"
+          aria-label="Reproducir demo"
+        >
+          <img src={playIcon} alt="Play" class="w-full h-full object-contain" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ services }}>
+  let current = 0;
+  const track = document.getElementById("services-inner");
+  const cards = document.querySelectorAll(".service-card");
+  const dots = document.querySelectorAll(".carousel-dot");
+  const currentNum = document.getElementById("current-num");
+  const progressBar = document.getElementById("progress-bar");
+  const detailTitle = document.getElementById("detail-title");
+  const detailDesc = document.getElementById("detail-desc");
+  const detailFeatures = document.getElementById("detail-features");
+
+  function goTo(index) {
+    current = index;
+    const cardWidth = cards[0]?.offsetWidth + 24 || 344;
+    const maxOffset = Math.max(0, (services.length * cardWidth) - (track?.parentElement?.offsetWidth || 1200));
+    const offset = Math.min(index * cardWidth, maxOffset);
+    if (track) track.style.transform = `translateX(-${offset}px)`;
+
+    cards.forEach((c, i) => {
+      c.classList.toggle("border-[#fab206]", i === index);
+      c.classList.toggle("border-transparent", i !== index);
+      c.classList.toggle("shadow-[0_4px_30px_0_rgba(0,0,0,0.1)]", i === index);
+      c.classList.toggle("shadow-[0_4px_30px_0_rgba(0,0,0,0.05)]", i !== index);
+    });
+
+    dots.forEach((d, i) => {
+      d.classList.toggle("w-5", i === index);
+      d.classList.toggle("bg-[#fab306]", i === index);
+      d.classList.toggle("w-2", i !== index);
+      d.classList.toggle("bg-[#e2e8f0]", i !== index);
+    });
+
+    if (currentNum) currentNum.textContent = String(index + 1).padStart(2, "0");
+    if (progressBar) progressBar.style.width = `${((index + 1) / services.length) * 100}%`;
+
+    const s = services[index];
+    if (detailTitle) detailTitle.innerHTML = s.title.replace(" con ", "<br />con ").replace(" Full-", "<br />Full-");
+    if (detailDesc) detailDesc.textContent = s.description;
+    if (detailFeatures) {
+      detailFeatures.innerHTML = s.features
+        .map((f) => `<li class="flex items-center gap-2"><span class="font-inconsolata text-white text-base">${f}</span></li>`)
+        .join("");
+    }
+  }
+
+  document.getElementById("prev-service")?.addEventListener("click", () => goTo(Math.max(0, current - 1)));
+  document.getElementById("next-service")?.addEventListener("click", () => goTo(Math.min(services.length - 1, current + 1)));
+
+  cards.forEach((c, i) => c.addEventListener("click", () => goTo(i)));
+  dots.forEach((d, i) => d.addEventListener("click", () => goTo(i)));
+</script>

@@ -1,0 +1,110 @@
+---
+const logoUrl = "https://www.figma.com/api/mcp/asset/9e4aa056-4a97-4431-9d44-113eb6ec23fc";
+
+const navLinks = [
+  { label: "Inicio", href: "#inicio", active: true },
+  { label: "Servicios", href: "#servicios" },
+  { label: "Productos", href: "#productos" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Foro", href: "#foro" },
+];
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 h-[72px]"
+  style="box-shadow: 0 4px 40px 0 rgba(0,0,0,0.10);"
+  id="navbar"
+>
+  <!-- Logo -->
+  <a href="#inicio" class="flex items-center w-[180px]">
+    <img
+      src={logoUrl}
+      alt="Anden Logo"
+      class="h-7 w-auto object-contain"
+    />
+  </a>
+
+  <!-- Nav links -->
+  <ul class="hidden md:flex items-center gap-8">
+    {
+      navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "font-inconsolata text-base transition-colors",
+              link.active
+                ? "text-[#f7ab06] font-bold"
+                : "text-[#4a5568] font-medium hover:text-[#f7ab06]",
+            ]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <!-- CTA Button -->
+  <a
+    href="#contacto"
+    class="hidden md:inline-flex items-center px-6 py-2.5 rounded-[5px] font-inconsolata font-semibold text-sm text-[#151f2f] transition-opacity hover:opacity-90"
+    style="background: linear-gradient(201.61deg, #FBBA05 0%, #F69F07 100%);"
+  >
+    Contacto
+  </a>
+
+  <!-- Mobile menu button -->
+  <button
+    id="mobile-menu-btn"
+    class="md:hidden flex flex-col gap-1.5 p-2"
+    aria-label="Abrir menú"
+  >
+    <span class="block w-6 h-0.5 bg-white"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div
+  id="mobile-menu"
+  class="fixed top-[72px] left-0 right-0 z-40 bg-[#142030] hidden flex-col py-4 md:hidden"
+>
+  {
+    navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="px-6 py-3 font-inconsolata text-base text-white hover:text-[#f7ab06] transition-colors"
+      >
+        {link.label}
+      </a>
+    ))
+  }
+  <a
+    href="#contacto"
+    class="mx-6 mt-3 text-center py-2.5 rounded-[5px] font-inconsolata font-semibold text-sm text-[#151f2f]"
+    style="background: linear-gradient(201.61deg, #FBBA05 0%, #F69F07 100%);"
+  >
+    Contacto
+  </a>
+</div>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+    menu?.classList.toggle("flex");
+  });
+
+  // Transparent → solid on scroll
+  const navbar = document.getElementById("navbar");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 60) {
+      navbar?.classList.add("bg-[#000015]/95", "backdrop-blur-sm");
+    } else {
+      navbar?.classList.remove("bg-[#000015]/95", "backdrop-blur-sm");
+    }
+  });
+</script>
